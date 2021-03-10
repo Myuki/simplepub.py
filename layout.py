@@ -18,6 +18,13 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(600, 500)
+        MainWindow.setStyleSheet(u"font: 10pt \"Calibri\";\n"
+"font:10pt \"MS PGothic\";\n"
+"font: 10pt \"Microsoft YaHei\";\n"
+"font: 9pt \"Noto Sans\";\n"
+"font: 9pt \"Noto Sans CJK TC\";\n"
+"font: 9pt \"Noto Sans CJK SC\";\n"
+"font: 9pt \"Noto Sans CJK JP\";")
         MainWindow.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -44,16 +51,16 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.fileLineEdit = QLineEdit(self.centralwidget)
-        self.fileLineEdit.setObjectName(u"fileLineEdit")
+        self.filePathLineEdit = QLineEdit(self.centralwidget)
+        self.filePathLineEdit.setObjectName(u"filePathLineEdit")
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.fileLineEdit.sizePolicy().hasHeightForWidth())
-        self.fileLineEdit.setSizePolicy(sizePolicy)
-        self.fileLineEdit.setReadOnly(True)
+        sizePolicy.setHeightForWidth(self.filePathLineEdit.sizePolicy().hasHeightForWidth())
+        self.filePathLineEdit.setSizePolicy(sizePolicy)
+        self.filePathLineEdit.setReadOnly(True)
 
-        self.horizontalLayout.addWidget(self.fileLineEdit)
+        self.horizontalLayout.addWidget(self.filePathLineEdit)
 
         self.openFileButton = QPushButton(self.centralwidget)
         self.openFileButton.setObjectName(u"openFileButton")
@@ -82,16 +89,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.contentsLabel)
 
-        self.plainTextEdit = QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
+        self.contentsTextEdit = QPlainTextEdit(self.centralwidget)
+        self.contentsTextEdit.setObjectName(u"contentsTextEdit")
         sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.plainTextEdit.sizePolicy().hasHeightForWidth())
-        self.plainTextEdit.setSizePolicy(sizePolicy3)
-        self.plainTextEdit.setLineWrapMode(QPlainTextEdit.NoWrap)
+        sizePolicy3.setHeightForWidth(self.contentsTextEdit.sizePolicy().hasHeightForWidth())
+        self.contentsTextEdit.setSizePolicy(sizePolicy3)
+        self.contentsTextEdit.setLineWrapMode(QPlainTextEdit.NoWrap)
 
-        self.verticalLayout_3.addWidget(self.plainTextEdit)
+        self.verticalLayout_3.addWidget(self.contentsTextEdit)
 
 
         self.horizontalLayout_4.addLayout(self.verticalLayout_3)
@@ -108,33 +115,33 @@ class Ui_MainWindow(object):
         self.formLayout_6 = QFormLayout()
         self.formLayout_6.setObjectName(u"formLayout_6")
         self.formLayout_6.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
-        self.IllustrationBeginlabel = QLabel(self.centralwidget)
-        self.IllustrationBeginlabel.setObjectName(u"IllustrationBeginlabel")
-        sizePolicy2.setHeightForWidth(self.IllustrationBeginlabel.sizePolicy().hasHeightForWidth())
-        self.IllustrationBeginlabel.setSizePolicy(sizePolicy2)
+        self.IllustrationBeginninglabel = QLabel(self.centralwidget)
+        self.IllustrationBeginninglabel.setObjectName(u"IllustrationBeginninglabel")
+        sizePolicy2.setHeightForWidth(self.IllustrationBeginninglabel.sizePolicy().hasHeightForWidth())
+        self.IllustrationBeginninglabel.setSizePolicy(sizePolicy2)
 
-        self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.IllustrationBeginlabel)
+        self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.IllustrationBeginninglabel)
 
-        self.IllustrationBeginLineEdit = QLineEdit(self.centralwidget)
-        self.IllustrationBeginLineEdit.setObjectName(u"IllustrationBeginLineEdit")
-        sizePolicy.setHeightForWidth(self.IllustrationBeginLineEdit.sizePolicy().hasHeightForWidth())
-        self.IllustrationBeginLineEdit.setSizePolicy(sizePolicy)
+        self.IllustrationBeginningLineEdit = QLineEdit(self.centralwidget)
+        self.IllustrationBeginningLineEdit.setObjectName(u"IllustrationBeginningLineEdit")
+        sizePolicy.setHeightForWidth(self.IllustrationBeginningLineEdit.sizePolicy().hasHeightForWidth())
+        self.IllustrationBeginningLineEdit.setSizePolicy(sizePolicy)
 
-        self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.IllustrationBeginLineEdit)
+        self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.IllustrationBeginningLineEdit)
 
-        self.IllustrationEndlabel = QLabel(self.centralwidget)
-        self.IllustrationEndlabel.setObjectName(u"IllustrationEndlabel")
-        sizePolicy2.setHeightForWidth(self.IllustrationEndlabel.sizePolicy().hasHeightForWidth())
-        self.IllustrationEndlabel.setSizePolicy(sizePolicy2)
+        self.IllustrationEndinglabel = QLabel(self.centralwidget)
+        self.IllustrationEndinglabel.setObjectName(u"IllustrationEndinglabel")
+        sizePolicy2.setHeightForWidth(self.IllustrationEndinglabel.sizePolicy().hasHeightForWidth())
+        self.IllustrationEndinglabel.setSizePolicy(sizePolicy2)
 
-        self.formLayout_6.setWidget(1, QFormLayout.LabelRole, self.IllustrationEndlabel)
+        self.formLayout_6.setWidget(1, QFormLayout.LabelRole, self.IllustrationEndinglabel)
 
-        self.IllustrationEndLineEdit = QLineEdit(self.centralwidget)
-        self.IllustrationEndLineEdit.setObjectName(u"IllustrationEndLineEdit")
-        sizePolicy.setHeightForWidth(self.IllustrationEndLineEdit.sizePolicy().hasHeightForWidth())
-        self.IllustrationEndLineEdit.setSizePolicy(sizePolicy)
+        self.IllustrationEndingLineEdit = QLineEdit(self.centralwidget)
+        self.IllustrationEndingLineEdit.setObjectName(u"IllustrationEndingLineEdit")
+        sizePolicy.setHeightForWidth(self.IllustrationEndingLineEdit.sizePolicy().hasHeightForWidth())
+        self.IllustrationEndingLineEdit.setSizePolicy(sizePolicy)
 
-        self.formLayout_6.setWidget(1, QFormLayout.FieldRole, self.IllustrationEndLineEdit)
+        self.formLayout_6.setWidget(1, QFormLayout.FieldRole, self.IllustrationEndingLineEdit)
 
 
         self.verticalLayout_6.addLayout(self.formLayout_6)
@@ -208,6 +215,36 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(3, QFormLayout.FieldRole, self.translatorLineEdit)
 
+        self.sourceLabel = QLabel(self.centralwidget)
+        self.sourceLabel.setObjectName(u"sourceLabel")
+
+        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.sourceLabel)
+
+        self.sourceLineEdit = QLineEdit(self.centralwidget)
+        self.sourceLineEdit.setObjectName(u"sourceLineEdit")
+
+        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.sourceLineEdit)
+
+        self.languageLabel = QLabel(self.centralwidget)
+        self.languageLabel.setObjectName(u"languageLabel")
+
+        self.formLayout.setWidget(5, QFormLayout.LabelRole, self.languageLabel)
+
+        self.languageLineEdit = QLineEdit(self.centralwidget)
+        self.languageLineEdit.setObjectName(u"languageLineEdit")
+
+        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.languageLineEdit)
+
+        self.subjectLineEdit = QLineEdit(self.centralwidget)
+        self.subjectLineEdit.setObjectName(u"subjectLineEdit")
+
+        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.subjectLineEdit)
+
+        self.subjectLabel = QLabel(self.centralwidget)
+        self.subjectLabel.setObjectName(u"subjectLabel")
+
+        self.formLayout.setWidget(6, QFormLayout.LabelRole, self.subjectLabel)
+
 
         self.verticalLayout_6.addLayout(self.formLayout)
 
@@ -243,13 +280,16 @@ class Ui_MainWindow(object):
         self.openFileButton.setText(QCoreApplication.translate("MainWindow", u"Open File", None))
         self.contentsLabel.setText(QCoreApplication.translate("MainWindow", u"Contents:", None))
         self.IllustrationsLabel.setText(QCoreApplication.translate("MainWindow", u"Illustrations:", None))
-        self.IllustrationBeginlabel.setText(QCoreApplication.translate("MainWindow", u"Begin Identity:", None))
-        self.IllustrationEndlabel.setText(QCoreApplication.translate("MainWindow", u"End Identity:", None))
+        self.IllustrationBeginninglabel.setText(QCoreApplication.translate("MainWindow", u"Beginning:", None))
+        self.IllustrationEndinglabel.setText(QCoreApplication.translate("MainWindow", u"Ending:", None))
         self.metadataLabel.setText(QCoreApplication.translate("MainWindow", u"Metadata:", None))
         self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"Title:", None))
         self.authorLabel.setText(QCoreApplication.translate("MainWindow", u"Author:", None))
         self.illustratorLabel.setText(QCoreApplication.translate("MainWindow", u"Illustrator:", None))
         self.translatorLabel.setText(QCoreApplication.translate("MainWindow", u"Translator:", None))
+        self.sourceLabel.setText(QCoreApplication.translate("MainWindow", u"Source:", None))
+        self.languageLabel.setText(QCoreApplication.translate("MainWindow", u"Language:", None))
+        self.subjectLabel.setText(QCoreApplication.translate("MainWindow", u"Subject:", None))
         self.okButton.setText(QCoreApplication.translate("MainWindow", u"OK", None))
     # retranslateUi
 

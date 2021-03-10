@@ -13,6 +13,15 @@
   <property name="windowTitle">
    <string>simplepub.py</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 10pt &quot;Calibri&quot;;
+font:10pt &quot;MS PGothic&quot;;
+font: 10pt &quot;Microsoft YaHei&quot;;
+font: 9pt &quot;Noto Sans&quot;;
+font: 9pt &quot;Noto Sans CJK TC&quot;;
+font: 9pt &quot;Noto Sans CJK SC&quot;;
+font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
+  </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
   </property>
@@ -90,7 +99,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLineEdit" name="fileLineEdit">
+         <widget class="QLineEdit" name="filePathLineEdit">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -135,7 +144,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPlainTextEdit" name="plainTextEdit">
+           <widget class="QPlainTextEdit" name="contentsTextEdit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -170,7 +179,7 @@
              <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
             </property>
             <item row="0" column="0">
-             <widget class="QLabel" name="IllustrationBeginlabel">
+             <widget class="QLabel" name="IllustrationBeginninglabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -178,12 +187,12 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Begin Identity:</string>
+               <string>Beginning:</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="IllustrationBeginLineEdit">
+             <widget class="QLineEdit" name="IllustrationBeginningLineEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -193,7 +202,7 @@
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="IllustrationEndlabel">
+             <widget class="QLabel" name="IllustrationEndinglabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -201,12 +210,12 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>End Identity:</string>
+               <string>Ending:</string>
               </property>
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="IllustrationEndLineEdit">
+             <widget class="QLineEdit" name="IllustrationEndingLineEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -337,6 +346,36 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="sourceLabel">
+              <property name="text">
+               <string>Source:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="sourceLineEdit"/>
+            </item>
+            <item row="5" column="0">
+             <widget class="QLabel" name="languageLabel">
+              <property name="text">
+               <string>Language:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLineEdit" name="languageLineEdit"/>
+            </item>
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="subjectLineEdit"/>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="subjectLabel">
+              <property name="text">
+               <string>Subject:</string>
               </property>
              </widget>
             </item>
