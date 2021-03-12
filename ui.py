@@ -22,27 +22,28 @@ class UI(QMainWindow):
       self.ui.filePathLineEdit.setText(filePath)
       self.book = RawBook(filePath)
 
-      # Display metadata
-      self.book.getMetadata()
-      self.ui.titleLineEdit.setText(self.book.title)
-      self.ui.authorLineEdit.setText(self.book.author)
-      self.ui.illustratorLineEdit.setText(self.book.illustrator)
-      self.ui.translatorLineEdit.setText(self.book.translator)
-      self.ui.sourceLineEdit.setText(self.book.source)
-      self.ui.languageLineEdit.setText(self.book.language)
-      self.ui.subjectLineEdit.setText(self.book.subject)
+      # Display data in different raw text type
+      if self.book.rawTextType != RawTextType.default:
+        # Metadata
+        self.ui.titleLineEdit.setText(self.book.title)
+        self.ui.authorLineEdit.setText(self.book.author)
+        self.ui.illustratorLineEdit.setText(self.book.illustrator)
+        self.ui.translatorLineEdit.setText(self.book.translator)
+        self.ui.sourceLineEdit.setText(self.book.source)
+        self.ui.languageLineEdit.setText(self.book.language)
+        self.ui.subjectLineEdit.setText(self.book.subject)
+
+        # Illustration flag
+        self.ui.IllustrationBeginningLineEdit.setText(self.book.illustrationBeginning)
+        self.ui.IllustrationEndingLineEdit.setText(self.book.illustrationending)
 
       # Display contents
       self.book.getContents()
-      contents = ""
-      for chapter in self.book.contents:
-        contents = contents + chapter.string + "\n"
-      self.ui.contentsTextEdit.setPlainText(contents.strip())
-
-      # Get other data
-      self.book.getChaptersIndex()
-      self.book.getIllustrationsPath()
-      self.book.findIllustrationsIndex()
+      if self.book.contents != []:
+        contents = ""
+        for chapter in self.book.contents:
+          contents = contents + chapter.string + "\n"
+        self.ui.contentsTextEdit.setPlainText(contents.strip())
 
   @QtCore.Slot()
   def on_okButton_clicked(self):

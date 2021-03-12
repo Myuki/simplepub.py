@@ -161,7 +161,7 @@ font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <widget class="QLabel" name="IllustrationsLabel">
+           <widget class="QLabel" name="IllustrationFlagLabel">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -169,7 +169,7 @@ font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Illustrations:</string>
+             <string>Illustration Flag:</string>
             </property>
            </widget>
           </item>

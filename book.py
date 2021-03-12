@@ -42,8 +42,11 @@ class RawBook:
   afterContentsIndex: int = 0
   contents: List[Chapter] = []
 
+  # Illustration data
   # illustrationPath: index
   illustrations: Dict[str, int] = {}
+  illustrationBeginning: str = ""
+  illustrationEnding: str = ""
 
   def __init__(self, filePath: str):
     with open(filePath, "rt", encoding="utf-8") as file:
@@ -52,6 +55,7 @@ class RawBook:
       # Get the raw text and strip BOM
       self.rawText = file.read(-1).lstrip(u'\ufeff')
       self.rawLines = tuple(self.rawText.splitlines())
+      self.getIllustrationsPath()
 
     # Parse the raw text type in first 20 lines
     for line in self.rawLines[0:20]:
@@ -62,11 +66,19 @@ class RawBook:
         self.rawTextType = RawTextType.lk
         break
 
+    # Init in different raw text type
+    if self.rawTextType == RawTextType.tsdm or self.rawTextType == RawTextType.lk:
+      self.getMetadata()
+      self.illustrationBeginning = "　　（"
+      self.illustrationending = "）"
+
   # Get metadata in different raw text type
   def getMetadata(self):
     # TSDM/LK
     if self.rawTextType == RawTextType.tsdm or self.rawTextType == RawTextType.lk:
-      self.title = self.rawLines[0].strip()
+      for line in self.rawLines:
+        if not line.isspace():
+          self.title = self.rawLines[0].strip()
       self.source = "天使動漫" if self.rawTextType == RawTextType.tsdm else "輕之國度"
       self.language = "zh-Hant"
       self.subject = "輕小説"

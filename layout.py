@@ -105,12 +105,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6 = QVBoxLayout()
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.IllustrationsLabel = QLabel(self.centralwidget)
-        self.IllustrationsLabel.setObjectName(u"IllustrationsLabel")
-        sizePolicy2.setHeightForWidth(self.IllustrationsLabel.sizePolicy().hasHeightForWidth())
-        self.IllustrationsLabel.setSizePolicy(sizePolicy2)
+        self.IllustrationFlagLabel = QLabel(self.centralwidget)
+        self.IllustrationFlagLabel.setObjectName(u"IllustrationFlagLabel")
+        sizePolicy2.setHeightForWidth(self.IllustrationFlagLabel.sizePolicy().hasHeightForWidth())
+        self.IllustrationFlagLabel.setSizePolicy(sizePolicy2)
 
-        self.verticalLayout_6.addWidget(self.IllustrationsLabel)
+        self.verticalLayout_6.addWidget(self.IllustrationFlagLabel)
 
         self.formLayout_6 = QFormLayout()
         self.formLayout_6.setObjectName(u"formLayout_6")
@@ -279,7 +279,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"simplepub.py", None))
         self.openFileButton.setText(QCoreApplication.translate("MainWindow", u"Open File", None))
         self.contentsLabel.setText(QCoreApplication.translate("MainWindow", u"Contents:", None))
-        self.IllustrationsLabel.setText(QCoreApplication.translate("MainWindow", u"Illustrations:", None))
+        self.IllustrationFlagLabel.setText(QCoreApplication.translate("MainWindow", u"Illustration Flag:", None))
         self.IllustrationBeginninglabel.setText(QCoreApplication.translate("MainWindow", u"Beginning:", None))
         self.IllustrationEndinglabel.setText(QCoreApplication.translate("MainWindow", u"Ending:", None))
         self.metadataLabel.setText(QCoreApplication.translate("MainWindow", u"Metadata:", None))
