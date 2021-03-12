@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'layout.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.0.1
+## Created by: Qt User Interface Compiler version 6.0.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################

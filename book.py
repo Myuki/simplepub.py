@@ -7,8 +7,9 @@ import os
 
 # Identify book text type for parsing
 class RawTextType(Enum):
-  tsdm: int = 0
-  lk: int = 0
+  default: int = 0
+  tsdm: int = 1
+  lk: int = 1
 
 
 # Index chapter
@@ -33,7 +34,7 @@ class RawBook:
   textPath: str = ""
   textDirPath: str = ""
   rawText: str = ""
-  rawTextType: RawTextType
+  rawTextType: RawTextType = RawTextType.default
   rawLines: tuple
 
   # Book data
@@ -99,7 +100,7 @@ class RawBook:
   # Find all chapters location
   def getChaptersIndex(self):
     for chapter in self.contents:
-      chapter.index = self.findFirstLine(self.afterContentsIndex, chapter.string)
+      chapter.index = self.findLine(self.afterContentsIndex, chapter.string)
       # TSDM/LK chapter may has title illustration
       if self.rawTextType == RawTextType.tsdm or self.rawTextType == RawTextType.lk:
         if not self.rawLines[chapter.index - 1].isspace():
@@ -116,32 +117,13 @@ class RawBook:
   def findIllustrationsIndex(self, beginning: str = "", ending: str = ""):
     for illustration in self.illustrations:
       illustrationName = os.path.basename(os.path.splitext(illustration)[0])
-      self.illustrations[illustration] = self.findFirstLine(0, illustrationName, beginning, ending)
+      self.illustrations[illustration] = self.findLine(0, illustrationName, beginning, ending)
 
   # Find fist line in all lines
-  def findFirstLine(self, startIndex: int, substring: str, beginning: str = "", ending: str = "") -> int:
+  def findLine(self, startIndex: int, substring: str, beginning: str = "", ending: str = "") -> int:
     index = startIndex
     for line in self.rawLines[startIndex:]:
       if substring in line and line.startswith(beginning) and line.endswith(ending):
         return index
       index += 1
     return -1
-
-  # Find lines in all lines
-  def findLines(self, startIndex: int, substring: str, beginning: str = "", ending: str = "") -> Set[int]:
-    result: Set[int] = set()
-    index = startIndex
-    for line in self.rawLines[startIndex:]:
-      if substring in line and line.startswith(beginning) and line.endswith(ending):
-        result.add(index)
-      index += 1
-    return result
-
-  # Find lines in certain lines
-  def findLinesInLines(self, indexSet: Set[int], substring: str, beginning: str = "", ending: str = "") -> Set[int]:
-    result: Set[int] = set()
-    for index in indexSet:
-      line = self.rawLines[index]
-      if substring in line and line.startswith(beginning) and line.endswith(ending):
-        result.add(index)
-    return result
