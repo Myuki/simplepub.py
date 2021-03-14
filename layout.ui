@@ -154,6 +154,9 @@ font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
             <property name="lineWrapMode">
              <enum>QPlainTextEdit::NoWrap</enum>
             </property>
+            <property name="tabStopDistance">
+             <double>20.000000000000000</double>
+            </property>
            </widget>
           </item>
          </layout>
@@ -179,7 +182,7 @@ font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
              <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
             </property>
             <item row="0" column="0">
-             <widget class="QLabel" name="IllustrationBeginninglabel">
+             <widget class="QLabel" name="IllustrationPrefixlabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -187,12 +190,12 @@ font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Beginning:</string>
+               <string>Prefix:</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="IllustrationBeginningLineEdit">
+             <widget class="QLineEdit" name="IllustrationPrefixLineEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -202,7 +205,7 @@ font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="IllustrationEndinglabel">
+             <widget class="QLabel" name="IllustrationSuffixlabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -210,12 +213,12 @@ font: 9pt &quot;Noto Sans CJK JP&quot;;</string>
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Ending:</string>
+               <string>Suffix:</string>
               </property>
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="IllustrationEndingLineEdit">
+             <widget class="QLineEdit" name="IllustrationSuffixLineEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>

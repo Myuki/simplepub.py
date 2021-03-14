@@ -34,17 +34,33 @@ class UI(QMainWindow):
         self.ui.subjectLineEdit.setText(self.book.subject)
 
         # Illustration flag
-        self.ui.IllustrationBeginningLineEdit.setText(self.book.illustrationBeginning)
-        self.ui.IllustrationEndingLineEdit.setText(self.book.illustrationending)
+        self.ui.IllustrationPrefixLineEdit.setText(self.book.illustrationPrefix)
+        self.ui.IllustrationSuffixLineEdit.setText(self.book.illustrationSuffix)
 
       # Display contents
-      self.book.getContents()
+      self.book.initContents()
       if self.book.contents != []:
-        contents = ""
+        contents: str = ""
         for chapter in self.book.contents:
-          contents = contents + chapter.string + "\n"
+          indent: str = "\t" * chapter.level
+          contents = contents + indent + chapter.string + "\n"
         self.ui.contentsTextEdit.setPlainText(contents.strip())
 
   @QtCore.Slot()
   def on_okButton_clicked(self):
-    pass
+    # Set metadata
+    self.book.title = self.ui.titleLineEdit.text()
+    self.book.author = self.ui.authorLineEdit.text()
+    self.book.illustrator = self.ui.illustratorLineEdit.text()
+    self.book.translator = self.ui.translatorLineEdit.text()
+    self.book.source = self.ui.sourceLineEdit.text()
+    self.book.language = self.ui.languageLineEdit.text()
+    self.book.subject = self.ui.subjectLineEdit.text()
+
+    # Set illustration flag
+    self.book.illustrationPrefix = self.ui.IllustrationPrefixLineEdit.text()
+    self.book.illustrationSuffix = self.ui.IllustrationSuffixLineEdit.text()
+
+    # Set contents
+    self.book.setContents(self.ui.contentsTextEdit.toPlainText())
+    self.book.initChaptersIndex()

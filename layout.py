@@ -97,6 +97,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.contentsTextEdit.sizePolicy().hasHeightForWidth())
         self.contentsTextEdit.setSizePolicy(sizePolicy3)
         self.contentsTextEdit.setLineWrapMode(QPlainTextEdit.NoWrap)
+        self.contentsTextEdit.setTabStopDistance(20.000000000000000)
 
         self.verticalLayout_3.addWidget(self.contentsTextEdit)
 
@@ -115,33 +116,33 @@ class Ui_MainWindow(object):
         self.formLayout_6 = QFormLayout()
         self.formLayout_6.setObjectName(u"formLayout_6")
         self.formLayout_6.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
-        self.IllustrationBeginninglabel = QLabel(self.centralwidget)
-        self.IllustrationBeginninglabel.setObjectName(u"IllustrationBeginninglabel")
-        sizePolicy2.setHeightForWidth(self.IllustrationBeginninglabel.sizePolicy().hasHeightForWidth())
-        self.IllustrationBeginninglabel.setSizePolicy(sizePolicy2)
+        self.IllustrationPrefixlabel = QLabel(self.centralwidget)
+        self.IllustrationPrefixlabel.setObjectName(u"IllustrationPrefixlabel")
+        sizePolicy2.setHeightForWidth(self.IllustrationPrefixlabel.sizePolicy().hasHeightForWidth())
+        self.IllustrationPrefixlabel.setSizePolicy(sizePolicy2)
 
-        self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.IllustrationBeginninglabel)
+        self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.IllustrationPrefixlabel)
 
-        self.IllustrationBeginningLineEdit = QLineEdit(self.centralwidget)
-        self.IllustrationBeginningLineEdit.setObjectName(u"IllustrationBeginningLineEdit")
-        sizePolicy.setHeightForWidth(self.IllustrationBeginningLineEdit.sizePolicy().hasHeightForWidth())
-        self.IllustrationBeginningLineEdit.setSizePolicy(sizePolicy)
+        self.IllustrationPrefixLineEdit = QLineEdit(self.centralwidget)
+        self.IllustrationPrefixLineEdit.setObjectName(u"IllustrationPrefixLineEdit")
+        sizePolicy.setHeightForWidth(self.IllustrationPrefixLineEdit.sizePolicy().hasHeightForWidth())
+        self.IllustrationPrefixLineEdit.setSizePolicy(sizePolicy)
 
-        self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.IllustrationBeginningLineEdit)
+        self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.IllustrationPrefixLineEdit)
 
-        self.IllustrationEndinglabel = QLabel(self.centralwidget)
-        self.IllustrationEndinglabel.setObjectName(u"IllustrationEndinglabel")
-        sizePolicy2.setHeightForWidth(self.IllustrationEndinglabel.sizePolicy().hasHeightForWidth())
-        self.IllustrationEndinglabel.setSizePolicy(sizePolicy2)
+        self.IllustrationSuffixlabel = QLabel(self.centralwidget)
+        self.IllustrationSuffixlabel.setObjectName(u"IllustrationSuffixlabel")
+        sizePolicy2.setHeightForWidth(self.IllustrationSuffixlabel.sizePolicy().hasHeightForWidth())
+        self.IllustrationSuffixlabel.setSizePolicy(sizePolicy2)
 
-        self.formLayout_6.setWidget(1, QFormLayout.LabelRole, self.IllustrationEndinglabel)
+        self.formLayout_6.setWidget(1, QFormLayout.LabelRole, self.IllustrationSuffixlabel)
 
-        self.IllustrationEndingLineEdit = QLineEdit(self.centralwidget)
-        self.IllustrationEndingLineEdit.setObjectName(u"IllustrationEndingLineEdit")
-        sizePolicy.setHeightForWidth(self.IllustrationEndingLineEdit.sizePolicy().hasHeightForWidth())
-        self.IllustrationEndingLineEdit.setSizePolicy(sizePolicy)
+        self.IllustrationSuffixLineEdit = QLineEdit(self.centralwidget)
+        self.IllustrationSuffixLineEdit.setObjectName(u"IllustrationSuffixLineEdit")
+        sizePolicy.setHeightForWidth(self.IllustrationSuffixLineEdit.sizePolicy().hasHeightForWidth())
+        self.IllustrationSuffixLineEdit.setSizePolicy(sizePolicy)
 
-        self.formLayout_6.setWidget(1, QFormLayout.FieldRole, self.IllustrationEndingLineEdit)
+        self.formLayout_6.setWidget(1, QFormLayout.FieldRole, self.IllustrationSuffixLineEdit)
 
 
         self.verticalLayout_6.addLayout(self.formLayout_6)
@@ -280,8 +281,8 @@ class Ui_MainWindow(object):
         self.openFileButton.setText(QCoreApplication.translate("MainWindow", u"Open File", None))
         self.contentsLabel.setText(QCoreApplication.translate("MainWindow", u"Contents:", None))
         self.IllustrationFlagLabel.setText(QCoreApplication.translate("MainWindow", u"Illustration Flag:", None))
-        self.IllustrationBeginninglabel.setText(QCoreApplication.translate("MainWindow", u"Beginning:", None))
-        self.IllustrationEndinglabel.setText(QCoreApplication.translate("MainWindow", u"Ending:", None))
+        self.IllustrationPrefixlabel.setText(QCoreApplication.translate("MainWindow", u"Prefix:", None))
+        self.IllustrationSuffixlabel.setText(QCoreApplication.translate("MainWindow", u"Suffix:", None))
         self.metadataLabel.setText(QCoreApplication.translate("MainWindow", u"Metadata:", None))
         self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"Title:", None))
         self.authorLabel.setText(QCoreApplication.translate("MainWindow", u"Author:", None))
