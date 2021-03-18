@@ -3,6 +3,7 @@ from ebooklib import epub
 from enum import Enum
 from typing import Dict, List, Set
 import os
+import uuid
 
 
 # Identify book text type for parsing
@@ -32,17 +33,18 @@ class RawBook:
   illustrator: str = ""
   translator: str = ""
   source: str = ""
-  language: str = ""
+  language: str = "en-US"
   subject: str = ""
 
-  # Raw data
+  # Raw text data
   rawTextType: RawTextType = RawTextType.default
   __textPath: str = ""
   __textDirPath: str = ""
   __rawText: str = ""
-  __rawLines: tuple
+  __rawTextLines: tuple
 
   # Book data
+  __rawContents: str = ""
   contentsIndex: int = 0
   afterContentsIndex: int = 0
   contents: List[Chapter] = []
@@ -53,17 +55,19 @@ class RawBook:
   illustrationPrefix: str = ""
   illustrationSuffix: str = ""
 
+  __epub = epub.EpubBook()
+
   def __init__(self, filePath: str):
     with open(filePath, "rt", encoding="utf-8") as file:
       self.__textPath = filePath
       self.__textDirPath = os.path.dirname(self.__textPath)
       # Get the raw text and strip BOM
       self.__rawText = file.read(-1).lstrip(u'\ufeff')
-      self.__rawLines = tuple(self.__rawText.splitlines())
+      self.__rawTextLines = tuple(self.__rawText.splitlines())
       self.initIllustrationsPath()
 
     # Parse the raw text type in first 20 lines
-    for line in self.__rawLines[0:20]:
+    for line in self.__rawTextLines[0:20]:
       if "tsdm" in line:
         self.rawTextType = RawTextType.tsdm
         break
@@ -81,15 +85,15 @@ class RawBook:
   def initMetadata(self):
     # TSDM/LK
     if self.rawTextType == RawTextType.tsdm or self.rawTextType == RawTextType.lk:
-      for line in self.__rawLines:
+      for line in self.__rawTextLines:
         if not line.isspace():
-          self.title = self.__rawLines[0].strip()
+          self.title = self.__rawTextLines[0].strip()
       self.source = "天使動漫" if self.rawTextType == RawTextType.tsdm else "輕之國度"
-      self.language = "zh-Hant"
+      self.language = "zh-TW"
       self.subject = "輕小説"
 
       # Get metadata in first 20 lines
-      for line in self.__rawLines[0:20]:
+      for line in self.__rawTextLines[0:20]:
         if self.author == "" and ("作者" in line or "作者" in line):
           self.author = line.split("：")[1].strip()
         if self.illustrator == "" and ("插畫" in line or "插画" in line):
@@ -101,14 +105,14 @@ class RawBook:
   def initContents(self):
     # Find contents in first 100 lines
     index: int = 0
-    for line in self.__rawLines[0:100]:
+    for line in self.__rawTextLines[0:100]:
       index += 1
       if "CONTENTS" in line:
         self.contentsIndex = index
         break
     # Get contents in following lines
-    while (not self.__rawLines[index].isspace()):
-      line: str = self.__rawLines[index]
+    while (not self.__rawTextLines[index].isspace()):
+      line: str = self.__rawTextLines[index]
       level: int = 0
       # Set chapter level by count prefixed \t
       if line.startswith("\t"):
@@ -126,8 +130,30 @@ class RawBook:
       chapter.index = self.findLine(self.afterContentsIndex, chapter.string)
       # TSDM/LK chapter may has title illustration
       if self.rawTextType == RawTextType.tsdm or self.rawTextType == RawTextType.lk:
-        if not self.__rawLines[chapter.index - 1].isspace():
+        if not self.__rawTextLines[chapter.index - 1].isspace():
           chapter.illustration = True
+
+  # Set EPUB metadata
+  def initEpub(self):
+    # Use metadata and contents to generate UUID as EPUB identifier
+    self.__epub.set_identifier(uuid.uuid5(uuid.NAMESPACE_URL, self.title + self.author + self.illustrator + self.translator + self.source + self.language + self.subject + self.__rawContents + "simplepub.py"))
+
+    # Set EPUB metadata
+    if self.title != "":
+      self.__epub.set_title(self.title)
+    if self.author != "":
+      self.__epub.add_author(self.author)
+    if self.illustrator != "":
+      self.__epub.add_metadata("DC", "contributor", self.illustrator, {"name": "opf:role", "content": "ill"})
+    if self.translator != "":
+      self.__epub.add_metadata("DC", "contributor", self.translator, {"name": "opf:role", "content": "trl"})
+    if self.source != "":
+      self.__epub.set_unique_metadata("DC", "source", self.source)
+    if self.language != "":
+      self.__epub.set_language(self.language)
+    if self.subject != "":
+      self.__epub.set_unique_metadata("DC", "subject", self.subject)
+    self.__epub.set_unique_metadata(None, "meta", "", {"name": "Tool", "content": "simplepub.py"})
 
   # Get all image in text directory
   def initIllustrationsPath(self):
@@ -137,11 +163,12 @@ class RawBook:
         self.illustrations[self.__textDirPath + "/" + filePath] = -1
 
   # Set contents by string
-  def setContents(self, string: str):
-    rawContens: List[str] = string.splitlines()
+  def setContents(self, rawContents: str):
+    self.__rawContents = rawContents
+    rawContentsLines: List[str] = self.__rawContents.splitlines()
     contents: List[Chapter] = []
     # Set chapter level by count prefixed \t
-    for line in rawContens:
+    for line in rawContentsLines:
       level: int = 0
       if line.startswith("\t"):
         for char in line:
@@ -160,7 +187,7 @@ class RawBook:
   # Find fist line in all lines
   def findLine(self, startIndex: int, substring: str, prefix: str = "", suffix: str = "") -> int:
     index = startIndex
-    for line in self.__rawLines[startIndex:]:
+    for line in self.__rawTextLines[startIndex:]:
       if substring in line and line.startswith(prefix) and line.endswith(suffix):
         return index
       index += 1
